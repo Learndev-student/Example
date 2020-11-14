@@ -12,7 +12,7 @@
     <button onclick="change(2)">module 2</button>
   <script>
   async function change (n){
-    let {done}= await import(`/script${n}.js`);
+    let {done}= await import(`./script${n}.js`);
     done();
   }
   </script>
