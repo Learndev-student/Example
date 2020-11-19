@@ -1,0 +1,12 @@
+path {
+  transform-origin: 30px 50px;
+  animation: load 1.3s linear 0s normal infinite;
+}
+@keyframes load {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

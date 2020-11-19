@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Router- Ex.004</title>
+    <meta id="description" name="description" content="">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+ <!----- ADDITIONALS -------------->
+    <script src="../Additional/Scripts/alert.js"></script>
+    <link rel="stylesheet" href="../Additional/Styles/menu.css">
+<!--- HERE THE EXAMPLE STARTS ----->
+  </head>
+  <body>
+    <p>hi</p>
+    <button onclick="change(1)"></button>
+    <div></div>
+    <script>
+   var ele=document.getElementsByTagName('div')[0];
+   var st= localStorage.getItem('page');
+   localStorage.clear();
+    var i=0;
+    async function change (i){
+      let {div}=await import(`./script${i}.js`);
+      console.log('done');
+      ele.appendChild(div);
+      history.pushState({},'',`script${i}.html`);
+    }
+    if(st!==null){
+     console.log(st);
+     change (st);
+   }
+    </script>
+  </body>
+</html>
