@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Router- Ex.004</title>
-    <meta id="description" name="description" content="">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
- <!----- ADDITIONALS -------------->
-    <script src="../Additional/Scripts/alert.js"></script>
-    <link rel="stylesheet" href="../Additional/Styles/menu.css">
+<head>
+  <title>Router- Ex.004</title>
+  <meta id="description" name="description" content="">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1" />
+  <!----- ADDITIONALS -------------->
+  <script src="../Additional/Scripts/alert.js"></script>
+  <script defer type="module" src="../Additional/Scripts/menu.js"></script>
+  <link rel="stylesheet" href="../Additional/Styles/menu.css">
+</head>
+<body>
 <!--- HERE THE EXAMPLE STARTS ----->
-  </head>
-  <body>
-    <p>hi</p>
-    <button onclick="change(1)"></button>
-    <div></div>
-    <script>
-   var ele=document.getElementsByTagName('div')[0];
-   var st= localStorage.getItem('page');
-   localStorage.clear();
-    var i=0;
-    async function change (i){
-      let {div}=await import(`./script${i}.js`);
-      console.log('done');
+<svg id='menu_button'><g stroke='black' fill='none'><path d='M5,5 h10 M5,10 h10 M5,15 h10'></path></g></svg>
+  <div id="content">
+  <p>
+    hi
+  </p>
+  <button onclick="change(1)"></button>
+  </div>
+  <script>
+    var ele = document.getElementById('content');
+    var st = localStorage.getItem('page');
+    localStorage.clear();
+    var i = 0;
+    async function change (i) {
+      let {
+        div
+      } = await import(`./script${i}.js`);
       ele.appendChild(div);
-      history.pushState({},'',`script${i}.html`);
+      history.pushState({}, '', `script${i}.html`);
     }
-    if(st!==null){
-     console.log(st);
-     change (st);
-   }
-    </script>
-  </body>
+    if (st !== null) {
+      change (st);
+    }
+  </script>
+</body>
 </html>

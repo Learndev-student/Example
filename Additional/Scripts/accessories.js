@@ -1,0 +1,2 @@
+function getEle(s){s=s.replace(" ", "");let i = s[0];if(i === '#'){return document.getElementById(s.replace('#', ''));}else if(i === '.'){return document.getElementsByClassName(s.replace('\.', ''));}else{return document.getElementsByTagName(s);}}
+export {getEle};
