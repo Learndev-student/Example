@@ -18,7 +18,7 @@ function menu_() {
   }
 }
 m_button.onclick =()=>menu_();
-let [no,url] = [-1,(document.URL).replace('http://localhost:8158/','')];
+let [no,url] = [-1,(document.URL).replace('https://learndev-student.github.io/Example/','')];
 list.title.forEach(function(o) {
   no++;
   if(url==(`${list.src[no]}index.html`)){
