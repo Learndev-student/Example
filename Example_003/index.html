@@ -2,18 +2,30 @@
 <html>
   <head>
     <title>Loader- Ex.003</title>
-    <meta id="description" name="description" content="Loader"/>
+    <meta id="description" name="description" content=""/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1"/>
    <!----- ADDITIONALS -------------->
    <script src="../Additional/Scripts/alert.js"></script>
+   <script defer type="module" src="../Additional/Scripts/menu.js"></script>
+     <link rel='stylesheet' href='../Additional/Styles/menu.css'>
      <!--- HERE THE EXAMPLE STARTS ----->
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
   </head>
   <body>
-  <svg width="200px" height="200px">
-    <path id="arc" stroke="red" fill="none" stroke-width="3px" stroke-linecap="round" d="M10,50 a40,40,45,0,0,0,0"></path>
-  </svg>
+   <svg id='menu_button'></svg>
+   <figure class='image'>
+     <img width='100px' height='100px' src='cat.jpg'>
+     <svg class='load'><path stroke="red" fill="none" stroke-width="3px" stroke-linecap="round" d="M10,50 a40,40,45,0,0,0,0"></path></svg>
+   </figure>
+   <script>
+   window.onload=()=>{
+let div=document.getElementsByClassName('image')[0];
+let img=document.getElementsByTagName('img')[0];
+let arc=document.getElementsByTagName('path')[1];
+let obj=new Load(img,div,arc);
+}
+</script>
 </body>
 </html>

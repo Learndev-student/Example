@@ -7,12 +7,12 @@ const list = {
     "Router",
     "Trigonometry"],
   src: [
-    "../index.html",
-    "../Example_001/",
-    "../Example_002/",
-    "../Example_003/",
-    "../Example_004/",
-    "../Example_005/"],
+    "Home/",
+    "Example_001/",
+    "Example_002/",
+    "Example_003/",
+    "Example_004/",
+    "Example_005/"],
 };
 export {
   list

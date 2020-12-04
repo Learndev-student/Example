@@ -1,8 +1,13 @@
 //use this code as a loading element for your web as ANDROID
-var y, n, i, r, x, j, m;
-//onload
-window.onload = function() {
-  var arc = document.getElementById("arc");
+class Load{
+constructor(img,div,arc){
+var y, n, i, r, x, j, m, rotate;
+img.onload=()=>{
+  clearInterval(rotate);
+  div.removeChild(arc);
+  div.appendChild(img);
+};
+div.removeChild(img);
   //taking 10,50 as origin
   //y ordinate
   y = 0;
@@ -16,8 +21,7 @@ window.onload = function() {
   //final x ordinate
   m = 0;
   j = true;
-  setInterval(load, 12);
-}
+ rotate= setInterval(load, 12);
 //loader
 function load() {
   if (i%4 == 0) {
@@ -77,4 +81,6 @@ function n_value() {
   if (n%90 == 0) {
     i++;
   }
+}
+}
 }
