@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Loader- Ex.003</title>
-    <meta id="description" name="description" content=""/>
+    <meta id="description" name="description" content="Dynamic Loader for Images"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1"/>
    <!----- ADDITIONALS -------------->
@@ -10,21 +10,71 @@
    <script defer type="module" src="../Additional/Scripts/menu.js"></script>
      <link rel='stylesheet' href='../Additional/Styles/menu.css'>
      <!--- HERE THE EXAMPLE STARTS ----->
-    <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
   </head>
   <body>
    <svg id='menu_button'></svg>
-   <figure class='image'>
-     <img width='100px' height='100px' src='cat.jpg'>
-     <svg class='load'><path stroke="red" fill="none" stroke-width="3px" stroke-linecap="round" d="M10,50 a40,40,45,0,0,0,0"></path></svg>
-   </figure>
+   <h2>Disaster Images</h2>
+   <p><b><i>Image 7 is of about 20MBs to make this example more appropriate for large images</i></b></p>
+     <button onclick='previous()'>Previous</button>
+   <button onclick='next()'>Next</button>
+   <!-----Image Container----->
+   <div class='image'>
+     <figcaption></figcaption>
+   </div>
+   <style>
+   .image{
+ height:100px;
+   }
+   /*For Rotation*/
+   @keyframes load {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style>
    <script>
-   window.onload=()=>{
+ //array of sources
+ const img_arr=['Avalanche.jpeg','Fire.png','Flood.jpg','Landslide.jpg','Nuclear.png','Tornado.jpg','Amphan.jpg'];
+ //Load obj
+   var obj;
+ //img number
+   var count=-1;
 let div=document.getElementsByClassName('image')[0];
-let img=document.getElementsByTagName('img')[0];
-let arc=document.getElementsByTagName('path')[1];
-let obj=new Load(img,div,arc);
+let cap=document.getElementsByTagName('figcaption')[0];
+//Previous button
+   function previous (){
+  count--;
+  if(count<0){
+    count=img_arr.length-1;
+  }
+  re(div,'img');
+  obj=new Load(img_arr[count],div);
+  cap.textContent=`${count+1}) ${img_arr[count]}`;
+}
+//Next button
+function next (){
+  count++;
+  if(count>=img_arr.length){
+    count=0;
+  }
+   re(div,'img');
+   obj=new Load(img_arr[count],div);
+   cap.textContent=`${count+1}) ${img_arr[count]}`;
+}
+//Remove images that were previously shown
+function re(node,name){
+  node.childNodes.forEach((o)=>{
+    if(o.class==name){
+      node.removeChild(o);
+    }
+  });
+}
+window.onload=(o)=>{
+next();
 }
 </script>
 </body>

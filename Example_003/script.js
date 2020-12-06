@@ -1,14 +1,27 @@
 //use this code as a loading element for your web as ANDROID
-class Load{
-constructor(img,div,arc){
+function Load(src,div){
 var y, n, i, r, x, j, m, rotate;
+let img=document.createElement('img');
+let svg=document.createElementNS("http://www.w3.org/2000/svg", "svg");
+let arc=document.createElementNS("http://www.w3.org/2000/svg", "path");
+img.class='img';
+img.src=src;
 img.onload=()=>{
   clearInterval(rotate);
-  div.removeChild(arc);
+  div.removeChild(svg);
   div.appendChild(img);
 };
-div.removeChild(img);
-  //taking 10,50 as origin
+svg.class='img';
+svg.appendChild(arc);
+arc.setAttribute('stroke','red');
+arc.setAttribute('stroke-width','3px');
+arc.setAttribute('stroke-linecap','round');
+arc.setAttribute('fill','none');
+arc.style=`transform-origin:${div.getBoundingClientRect().width/2}px ${div.getBoundingClientRect().height/2}px;animation: load 1.3s linear 0s normal infinite;`;
+arc.stroke='red';
+arc.class='load_path';
+div.appendChild(svg);
+//taking 10,50 as origin
   //y ordinate
   y = 0;
   //angle
@@ -29,9 +42,9 @@ function load() {
     y = r*Math.sin(n*Math.PI/180);
     x = Math.sqrt(Math.pow(r, 2)-Math.pow(y, 2)); m = r-x;
     if (j == false) {
-      arc.setAttribute("d", (`M10,50 a${r},${r} 0 1 0 ${m},${y}`));
+      arc.setAttribute("d", (`M${div.getBoundingClientRect().width/2-r},${div.getBoundingClientRect().height/2} a${r},${r} 0 1 0 ${m},${y}`));
     } else {
-      arc.setAttribute("d", (`M10,50 a${r},${r} 0 0 0 ${m},${y}`));
+      arc.setAttribute("d", (`M${div.getBoundingClientRect().width/2-r},${div.getBoundingClientRect().height/2} a${r},${r} 0 0 0 ${m},${y}`));
     }
   } else if (i%4 == 1) {
     n_value();
@@ -39,9 +52,9 @@ function load() {
     x = Math.sqrt(Math.pow(r, 2)-Math.pow(y, 2));
     m = r+x;
     if (j == false) {
-      arc.setAttribute("d", (`M10,50 a${r},${r} 0 1 0 ${m},${y}`));
+      arc.setAttribute("d", (`M${div.getBoundingClientRect().width/2-r},${div.getBoundingClientRect().height/2} a${r},${r} 0 1 0 ${m},${y}`));
     } else {
-      arc.setAttribute("d", (`M10,50 a${r},${r} 0 0 0 ${m},${y}`));
+      arc.setAttribute("d", (`M${div.getBoundingClientRect().width/2-r},${div.getBoundingClientRect().height/2} a${r},${r} 0 0 0 ${m},${y}`));
     }
   } else if (i%4 == 2) {
     n_value();
@@ -49,9 +62,9 @@ function load() {
     x = Math.sqrt(Math.pow(r, 2)-Math.pow(y, 2));
     m = r+x;
     if (j == true) {
-      arc.setAttribute("d", (`M10,50 a${r},${r} 0 1 0 ${m},${y}`));
+      arc.setAttribute("d", (`M${div.getBoundingClientRect().width/2-r},${div.getBoundingClientRect().height/2} a${r},${r} 0 1 0 ${m},${y}`));
     } else {
-      arc.setAttribute("d", (`M10,50 a${r},${r} 0 0 0 ${m},${y}`));
+      arc.setAttribute("d", (`M${div.getBoundingClientRect().width/2-r},${div.getBoundingClientRect().height/2} a${r},${r} 0 0 0 ${m},${y}`));
     }
   } else if (i%4 == 3) {
     n_value();
@@ -59,9 +72,9 @@ function load() {
     x = Math.sqrt(Math.pow(r, 2)-Math.pow(y, 2));
     m = r-x;
     if (j == true) {
-      arc.setAttribute("d", (`M10,50 a${r},${r} 0 1 0 ${m},${y}`));
+      arc.setAttribute("d", (`M${div.getBoundingClientRect().width/2-r},${div.getBoundingClientRect().height/2} a${r},${r} 0 1 0 ${m},${y}`));
     } else {
-      arc.setAttribute("d", (`M10,50 a${r},${r} 0 0 0 ${m},${y}`));
+      arc.setAttribute("d", (`M${div.getBoundingClientRect().width/2-r},${div.getBoundingClientRect().height/2} a${r},${r} 0 0 0 ${m},${y}`));
     }
   }
 }
@@ -81,6 +94,5 @@ function n_value() {
   if (n%90 == 0) {
     i++;
   }
-}
 }
 }
